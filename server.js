@@ -13,6 +13,8 @@ const dbName = 'meet';
 
 // Serve the HTML files
 app.use(express.static('public'));
+// app.use(expressSanitizer());
+app.set('view engine', 'ejs');
 
 // Parse URL-encoded bodies
 app.use(express.urlencoded({ extended: true }));
@@ -89,8 +91,8 @@ mongoose.connect(`${url}/${dbName}`, { useNewUrlParser: true, useUnifiedTopology
         return res.redirect('/dashboard.html');
       } catch (error) {
         console.error('Failed to login:', error);
-        res.render('login', { error: 'Failed to login' });
-      }
+        res.render('login', { error: 'Failed to login'});
+    }
     });
   
     // Start the server
