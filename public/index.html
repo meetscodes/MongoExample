@@ -1,16 +1,127 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Submit Form</title>
-  </head>
-  <body>
-    <h1>Submit Form</h1>
-    <form action="/submit-form" method="post">
-      <label for="input1">Input 1:</label>
-      <input type="text" id="input1" name="input1" required><br>
-      <label for="input2">Input 2:</label>
-      <input type="text" id="input2" name="input2" required><br>
-      <button type="submit">Submit</button>
-    </form>
-  </body>
+
+<head>
+  <title>Submit Form...</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<body>
+
+
+
+
+  <form action="/submit-form" method="post">
+
+
+    <body class="ground" background="img/bg.100.jpg" style="margin: 90px;">
+      <section class="d-felx flex-column min-vh-100 justify-content-center align-item-center">
+        <div class="container" data-tilt
+        style="  border: 1px solid rgba(255, 255, 255, 0.3);
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(7px);
+        animation-duration: 4s;
+"
+        >
+          <div class="row" >
+            <div class="col-md-10" style="margin-left: 130px;">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="m-5 text-center">
+                    <h1>welcome!</h1>
+                  </div>
+
+
+
+                  <form name="login" class="m-5" onsubmit="return  validateform()">
+                    <div class="mb-3">
+                      <label class="form-label" style="font-size: 20px;" for="username">Username :</label>
+                      <input class="form-control" type="text" id="input1" name="username" required><br>
+                      <p id="error-messege" class="error"></p>
+                    </div>
+
+
+                    <div class="mb-3">
+                      <label class="form-label"  style="font-size: 20px;" name="E-mail">E-mail :</label>
+                      <input type="text" class="form-control" id="input2" name="email" required><br>
+                      <p id="email-error" class="error"></p>
+
+                    </div>
+
+
+                    <div class="mb-3">
+                      <label class="form-label"  style="font-size: 20px;" name="password">password :</label>
+                      <input type="password" class="form-control" id="input3" name="password" required><br>
+                      <p id="password-error" class="error"></p>
+                    </div>
+
+
+                    <div class="row mb-3">
+                      <div class="col-6">
+                        <div class="form-check">
+                          <input class="form-check-input"  style="font-size: 20px;" type="checkbox" id="remember-me">
+                          <label class="form-check-label" name="remember-me">Remember-me</label>
+                        </div>
+                      </div>
+
+
+                      <!-- <div class="col-6">
+                        <div class="text-decoration-none">
+                          <a href="forgot password.html" class="txtForgot">Forgot Password</a>
+                        </div>
+                      </div> -->
+
+
+                      <div>
+                        <button class="button 2"
+                          style="margin-top: 30px;margin-left: 180px; background-color: blue;border: none;color: white
+                                      ;width: 70%;padding: 6px 27px;text-align: center;text-decoration: none;display: inline-block;font-size: 18px;margin: 4px 50px;border-radius: 10px;cursor: pointer;">Submit</button>
+                      </div>
+
+                      <a href="login.html" class="txtsignup"> Login</a>
+                    </div>
+                  </form>
+                </div>
+                <div class="col-lg-6">
+                  <img src="img/s.s_1-removebg-preview.png" alt="login" class="img " style="border-radius: 40px; ">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <style>
+        .txtForgot {
+          text-decoration: none;
+        }
+
+        .txtsignup {
+          text-decoration: none;
+          color: white;
+          font-size: 1.5rem;
+        margin: auto;
+        display: grid;
+        }
+        .img{
+          border-radius: 10px;
+          margin-top: 10px;
+        }
+
+        .error {
+          color: red;
+          margin: 0px;
+          /* text-align: left; */
+        }
+      </style>
+<script src="vanilla-tilt.js"></script>
+
+    </body>
+  </form>
+  
+
+
 </html>
