@@ -67,7 +67,7 @@ mongoose.connect(`${url}/${dbName}`, { useNewUrlParser: true, useUnifiedTopology
       }
     });
     
-    // Login route
+    // Login r  oute
     app.get('/login', (req, res) => {
       res.redirect('/dashboard.html');
     });
