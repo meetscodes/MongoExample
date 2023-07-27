@@ -1,14 +1,18 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const bodyparser = require('body-parser');
 const bcrypt = require('bcrypt');
-const cors = require('cors');
-
+// const cors = require('cors');
 const app = express();
 const port = 3000;
 
-app.use(cors());
+//  app.use(cors());
 app.use(express.static('public'));
-app.set('view engine', 'ejs');
+
+app.use(bodyparser.urlencoded({ extended: false }));
+app.use(bodyparser.json());
+
+// app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
 
 const url = 'mongodb+srv://lakhanimeet:lakhanimeet@cluster0.okzfoxe.mongodb.net';
@@ -69,28 +73,37 @@ mongoose.connect(`${url}/${dbName}`, { useNewUrlParser: true, useUnifiedTopology
     });
 
     app.put('/update/:id', async (req, res) => {
-      const { id } = req.params;
-      const { username } = req.body;
-    
+      const id = req.params.id;
+      const updates = req.body;
+
       try {
         // Find the user by ID
-        const username = await Data.findByIdAndUpdate(id, { username }, { new: true });
-        if (!user) {
-          return res.status(404).json({ success: false, message: `User with ID ${id} not found` });
+        const user = await Data.updateOne({ _id: id }, updates);
+
+        if (user.nModified === 0) {
+          return res.status(404).json({ message: `cannot find user with ID ${id}` });
         }
-    
-        // Update the user's username
-        user.username = username;
-        await user.save();
-    
-        return res.json({ success: true, message: 'User updated successfully', user: user });
+
+        return res.status(200).json({ success: true, message: 'User updated successfully', user: user });
       } catch (error) {
         console.error(error);
         res.status(500).json({ success: false, message: 'Internal server error' });
       }
     });
 
+    app.delete('/users/:id', async (req, res) => {
+      Data.deleteOne({ _id: req.params.id }).then(
+        () =>{ res.status(200).json({
+        success: "User deleted successfully"
+      });
+    }).catch((error ) => {
+      res.status(500).json({ success: false, message: '  server Error' });
     
+    }
+    );
+  });
+    
+
 
     app.listen(port, () => {
       console.log(`Server running on port ${port}`);
